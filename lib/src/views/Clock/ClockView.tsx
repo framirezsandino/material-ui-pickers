@@ -299,7 +299,7 @@ export function ClockView<TDate>(props: ClockViewProps<TDate>) {
       <Clock
         date={date}
         ampmInClock={ampmInClock}
-        onDateChange={onDateChange}
+        onDateChange={onDateChange as any}
         type={type}
         ampm={ampm}
         minutesStep={minutesStep}

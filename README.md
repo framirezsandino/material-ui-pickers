@@ -1,4 +1,8 @@
 <p align="center">
+  This package is a fork from <a href="https://github.com/mui-org/material-ui-pickers" rel="noopener" target="_blank">https://github.com/mui-org/material-ui-pickers</a></p>
+</p>
+
+<p align="center">
   <a href="https://material-ui.com/" rel="noopener" target="_blank"><img width="200" src="https://material-ui-pickers.dev/static/meta-image.png" alt="Material-ui-pickers logo"></a></p>
 </p>
 
@@ -8,10 +12,10 @@
 
 Accessible, customizable, delightful date & time pickers for [@material-ui/core](https://material-ui.com/)
 
-[![npm package](https://img.shields.io/npm/v/@material-ui/pickers.svg)](https://www.npmjs.org/package/@material-ui/pickers)
-[![npm download](https://img.shields.io/npm/dm/@material-ui/pickers.svg)](https://www.npmjs.org/package/@material-ui/pickers)
+[![npm package](https://img.shields.io/npm/v/material-ui-pickers.svg)](https://www.npmjs.org/package/material-ui-pickers)
+[![npm download](https://img.shields.io/npm/dm/material-ui-pickers.svg)](https://www.npmjs.org/package/material-ui-pickers)
 [![codecov](https://codecov.io/gh/mui-org/material-ui-pickers/branch/next/graph/badge.svg)](https://codecov.io/gh/mui-org/material-ui-pickers)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/@material-ui/pickers)](https://bundlephobia.com/result?p=@material-ui/pickers@latest)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/material-ui-pickers)](https://bundlephobia.com/result?p=material-ui-pickers@latest)
 [![CircleCI](https://circleci.com/gh/mui-org/material-ui-pickers.svg?style=svg)](https://circleci.com/gh/mui-org/material-ui-pickers)
 [![Cypress.io tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square)](https://dashboard.cypress.io/#/projects/qow28y/runs)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/mui-org/material-ui-pickers)

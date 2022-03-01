@@ -38,7 +38,7 @@ const materialTheme = createMuiTheme({
       },
     },
   },
-});
+} as any);
 
 export default function CssOverrides() {
   const [selectedDate, handleDateChange] = React.useState<Date | null>(new Date());
