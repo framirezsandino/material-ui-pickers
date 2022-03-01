@@ -13,7 +13,7 @@ export interface MonthProps {
 }
 
 export const useStyles = makeStyles(
-  (theme) => ({
+  (theme: any) => ({
     root: {
       flex: '1 0 33.33%',
       display: 'flex',
@@ -62,6 +62,7 @@ export const Month: React.FC<MonthProps> = (props) => {
       color={selected ? 'primary' : undefined}
       variant={selected ? 'h5' : 'subtitle1'}
       {...other}
+      style={({color: 'red'})}
     />
   );
 };

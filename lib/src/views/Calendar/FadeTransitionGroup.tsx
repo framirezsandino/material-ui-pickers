@@ -63,7 +63,7 @@ export const FadeTransitionGroup: React.FC<FadeTransitionProps> = ({
   return (
     <TransitionGroup
       className={clsx(classes.root, className)}
-      childFactory={(element) =>
+      childFactory={(element: any) =>
         React.cloneElement(element, {
           classNames: transitionClasses,
         })

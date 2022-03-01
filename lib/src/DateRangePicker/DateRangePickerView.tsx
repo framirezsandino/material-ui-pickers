@@ -170,6 +170,20 @@ export function DateRangePickerView<TDate>(props: DateRangePickerViewProps<TDate
     ]
   );
 
+  const handleDateRangeChange = React.useCallback(
+    (newDateRange: DateRange<Date>) => {
+      onDateChange(
+        newDateRange as DateRange<TDate>,
+        wrapperVariant,
+        'finish'
+      );
+    },
+    [
+      onDateChange,
+      wrapperVariant,
+    ]
+  );
+
   const renderView = () => {
     const sharedCalendarProps = {
       date,
@@ -191,7 +205,7 @@ export function DateRangePickerView<TDate>(props: DateRangePickerViewProps<TDate
 
     switch (wrapperVariant) {
       case 'desktop': {
-        return <DateRangePickerViewDesktop calendars={calendars} {...sharedCalendarProps} />;
+        return <DateRangePickerViewDesktop calendars={calendars} {...sharedCalendarProps} onDateRangeChange={handleDateRangeChange}/>;
       }
 
       default: {

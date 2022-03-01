@@ -299,7 +299,6 @@ export function ClockView<TDate>(props: ClockViewProps<TDate>) {
       <Clock
         date={date}
         ampmInClock={ampmInClock}
-        // @ts-expect-error FIX ME
         onDateChange={onDateChange}
         type={type}
         ampm={ampm}

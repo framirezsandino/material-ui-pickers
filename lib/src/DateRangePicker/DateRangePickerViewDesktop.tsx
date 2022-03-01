@@ -17,6 +17,7 @@ import {
   isEndOfRange,
   DateValidationProps,
 } from '../_helpers/date-utils';
+import DateRangePickerQuickButtons from './DateRangePickerQuickButtons';
 
 export interface ExportedDesktopDateRangeCalendarProps<TDate> {
   /**
@@ -34,19 +35,27 @@ export interface ExportedDesktopDateRangeCalendarProps<TDate> {
 
 interface DesktopDateRangeCalendarProps<TDate>
   extends ExportedDesktopDateRangeCalendarProps<TDate>,
-    Omit<CalendarProps<TDate>, 'renderDay'>,
-    DateValidationProps<TDate>,
-    ExportedArrowSwitcherProps {
+  Omit<CalendarProps<TDate>, 'renderDay'>,
+  DateValidationProps<TDate>,
+  ExportedArrowSwitcherProps {
   date: DateRange<TDate | null>;
   changeMonth: (date: TDate) => void;
   currentlySelectingRangeEnd: 'start' | 'end';
+  onDateRangeChange: (dateRange: DateRange<Date>) => void;
 }
 
 export const useStyles = makeStyles(
   (theme) => ({
     root: {
       display: 'flex',
+      flexDirection: 'column',
+    },
+    wrapper: {
+      display: 'flex',
       flexDirection: 'row',
+    },
+    rangeButtonsWrapper: {
+      padding: '16px'
     },
     rangeCalendarContainer: {
       '&:not(:last-child)': {
@@ -93,6 +102,7 @@ export function DateRangePickerViewDesktop<TDate>(props: DesktopDateRangeCalenda
     rightArrowButtonText,
     rightArrowIcon,
     onChange,
+    onDateRangeChange,
     disableFuture,
     disablePast,
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -125,6 +135,7 @@ export function DateRangePickerViewDesktop<TDate>(props: DesktopDateRangeCalenda
   const handleDayChange = React.useCallback(
     (day: TDate | null) => {
       setRangePreviewDay(null);
+      console.log(day);
       onChange(day);
     },
     [onChange]
@@ -155,51 +166,57 @@ export function DateRangePickerViewDesktop<TDate>(props: DesktopDateRangeCalenda
 
   return (
     <div className={classes.root}>
-      {getCalendarsArray(calendars).map((_, index) => {
-        const monthOnIteration = utils.setMonth(currentMonth, utils.getMonth(currentMonth) + index);
+      <div className={classes.wrapper}>
+        {getCalendarsArray(calendars).map((_, index) => {
+          const monthOnIteration = utils.setMonth(currentMonth, utils.getMonth(currentMonth) + index);
 
-        return (
-          <div key={index} className={classes.rangeCalendarContainer}>
-            <ArrowSwitcher
-              className={classes.arrowSwitcher}
-              onLeftClick={selectPreviousMonth}
-              onRightClick={selectNextMonth}
-              isLeftHidden={index !== 0}
-              isRightHidden={index !== calendars - 1}
-              isLeftDisabled={isPreviousMonthDisabled}
-              isRightDisabled={isNextMonthDisabled}
-              leftArrowButtonProps={leftArrowButtonProps}
-              leftArrowButtonText={leftArrowButtonText}
-              leftArrowIcon={leftArrowIcon}
-              rightArrowButtonProps={rightArrowButtonProps}
-              rightArrowButtonText={rightArrowButtonText}
-              rightArrowIcon={rightArrowIcon}
-              text={utils.format(monthOnIteration, 'monthAndYear')}
-            />
-            <Calendar<TDate>
-              {...other}
-              key={index}
-              date={date}
-              className={classes.calendar}
-              onChange={handleDayChange}
-              currentMonth={monthOnIteration}
-              TransitionProps={CalendarTransitionProps}
-              renderDay={(day, __, DayProps) =>
-                renderDay(day, {
-                  isPreviewing: isWithinRange(utils, day, previewingRange),
-                  isStartOfPreviewing: isStartOfRange(utils, day, previewingRange),
-                  isEndOfPreviewing: isEndOfRange(utils, day, previewingRange),
-                  isHighlighting: isWithinRange(utils, day, date),
-                  isStartOfHighlighting: isStartOfRange(utils, day, date),
-                  isEndOfHighlighting: isEndOfRange(utils, day, date),
-                  onMouseEnter: () => handlePreviewDayChange(day),
-                  ...DayProps,
-                })
-              }
-            />
-          </div>
-        );
-      })}
+          return (
+            <div key={index} className={classes.rangeCalendarContainer}>
+              <ArrowSwitcher
+                className={classes.arrowSwitcher}
+                onLeftClick={selectPreviousMonth}
+                onRightClick={selectNextMonth}
+                isLeftHidden={index !== 0}
+                isRightHidden={index !== calendars - 1}
+                isLeftDisabled={isPreviousMonthDisabled}
+                isRightDisabled={isNextMonthDisabled}
+                leftArrowButtonProps={leftArrowButtonProps}
+                leftArrowButtonText={leftArrowButtonText}
+                leftArrowIcon={leftArrowIcon}
+                rightArrowButtonProps={rightArrowButtonProps}
+                rightArrowButtonText={rightArrowButtonText}
+                rightArrowIcon={rightArrowIcon}
+                text={utils.format(monthOnIteration, 'monthAndYear')}
+              />
+              <Calendar<TDate>
+                {...other}
+                key={index}
+                date={date}
+                className={classes.calendar}
+                onChange={handleDayChange}
+                currentMonth={monthOnIteration}
+                TransitionProps={CalendarTransitionProps}
+                renderDay={(day, __, DayProps) =>
+                  renderDay(day, {
+                    isPreviewing: isWithinRange(utils, day, previewingRange),
+                    isStartOfPreviewing: isStartOfRange(utils, day, previewingRange),
+                    isEndOfPreviewing: isEndOfRange(utils, day, previewingRange),
+                    isHighlighting: isWithinRange(utils, day, date),
+                    isStartOfHighlighting: isStartOfRange(utils, day, date),
+                    isEndOfHighlighting: isEndOfRange(utils, day, date),
+                    onMouseEnter: () => handlePreviewDayChange(day),
+                    ...DayProps,
+                  })
+                }
+              />
+            </div>
+          );
+        })}
+
+      </div>
+      <div className={classes.rangeButtonsWrapper}>
+        <DateRangePickerQuickButtons onDateRangeChange={onDateRangeChange}/>
+      </div>
     </div>
   );
 }
