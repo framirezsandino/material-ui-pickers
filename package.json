@@ -1,7 +1,7 @@
 {
-  "name": "@material-ui/pickers",
-  "version": "4.0.0-alpha.11",
-  "private": true,
+  "name": "@framirezsandino/material-ui-pickers",
+  "version": "1.0.0-alpha.1",
+  "private": false,
   "description": "Fork from Material-ui pickers package",
   "main": "index.js",
   "directories": {
@@ -27,7 +27,7 @@
     "prettier": "prettier --write './{lib,docs,e2e}/**/*.{js,jsx,ts,tsx,json,css,md,mdx}'",
     "prettier:check": "prettier --check './{lib,docs,e2e}/**/*.{js,jsx,ts,tsx,json,css,md,mdx}'",
     "build": "yarn workspaces run build & yarn workspaces run build:typescript",
-    "release": "yarn workspace material-ui-pickers release && git push && git push --tags"
+    "release": "yarn workspace @framirezsandino/material-ui-pickers release && git push && git push --tags"
   },
   "repository": {
     "type": "git",
