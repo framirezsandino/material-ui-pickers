@@ -1,5 +1,5 @@
 {
-  "name": "@framirezsandino/material-ui-pickers",
+  "name": "@spring-global/material-ui-pickers",
   "version": "1.0.0-alpha.1",
   "private": false,
   "description": "React components, that implements material design pickers for material-ui v4",
