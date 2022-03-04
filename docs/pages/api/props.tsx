@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Ad from '_shared/Ad';
+
 import Code from '_shared/Code';
 import PropTypesTable from '_shared/PropTypesTable';
 import KawaiiIcon from '_shared/svgIcons/KawaiiIcon';
@@ -33,7 +33,7 @@ const Docs: React.FC<WithRouterProps> = ({ router }) => {
         <Grid item md={6} className={classes.title}>
           <h3>{title}</h3>
           <p>{description}</p>
-          <Ad />
+          
         </Grid>
         <Grid item md={6} container alignItems="flex-end" justifyContent="center">
           <KawaiiIcon className={classes.kawaiiIcon} size={220} />
